@@ -25,10 +25,10 @@ int main()
 	cout << pracownik.Pozycz(50000) << endl;
 	*/
 	
-	Skarbonka gotówka(200.99);
-	cout << "Saldo poczatkowe:" << gotówka.getGotówka() << endl;
-	cout << "Reszta w skarbonce:" << gotówka.Zap³aæZaObiad() << endl;
-	cout << "Skarbonka po wplacie:" << gotówka.Wp³aæNaObiad() << endl;
+	Skarbonka money(200.99);
+	cout << "Saldo poczatkowe:" << money.getmoney() << endl;
+	cout << "Reszta w skarbonce:" << money.PayForDinner() << endl;
+	cout << "Skarbonka po wplacie:" << money.Wp³aæNaObiad() << endl;
 
 	Cz³owiek czlowiek(1, "Adam","Wisniewski",1534.72);
 	cout << "Saldo po wplacie na obiad:  " << czlowiek.SaldoPoWp³acieNaObiad()<< endl;

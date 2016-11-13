@@ -6,7 +6,7 @@
 
 using namespace std;
 
-class Cz³owiek
+class Czlowiek
 {
 public:
 	int id;
@@ -14,13 +14,13 @@ public:
 	string nazwisko;
 	float saldo;
 
-	Cz³owiek(int a, string b, string c, float d);
+	Czlowiek(int a, string b, string c, float d);
 
-	~Cz³owiek();
+	~Czlowiek();
 
-	friend float Skarbonka::getGotówka();
+	friend float Skarbonka::getmoney();
 
-	float SaldoPoWp³acieNaObiad();
+	float SaldoPoWplacieNaObiad();
 
 	float getSaldo();
 };

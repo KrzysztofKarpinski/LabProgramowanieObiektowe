@@ -1,6 +1,6 @@
 #include "Konto.h"
 
-vector<Sta¿ysta> sta¿ysta;
+vector<Stazysta> sta¿ysta;
 vector<Pracownik> pracownik;
 
 Konto::Konto(int a, string b, string c, float d)

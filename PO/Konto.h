@@ -10,7 +10,7 @@ using namespace std;
 class Konto
 {
 public:
-	vector<Sta¿ysta> sta¿ysta;
+	vector<Stazysta> stazysta;
 	vector<Pracownik> pracownik;
 
 	Konto(int a, string b, string c, float d);

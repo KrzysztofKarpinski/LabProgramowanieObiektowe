@@ -4,7 +4,7 @@
 class Skarbonka
 {
 public:
-	float gotówka;
+	float money;
 
 	Skarbonka();
 
@@ -12,9 +12,9 @@ public:
 	
 	friend float Posilek::getCena();
 
-	float Zap³aæZaObiad();
+	float PayForDinner();
 
-	float Wp³aæNaObiad();
+	float WplacNaObiad();
 
-	float getGotówka();
+	float getmoney();
 };

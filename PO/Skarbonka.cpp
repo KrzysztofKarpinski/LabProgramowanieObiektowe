@@ -2,29 +2,29 @@
 
 Skarbonka::Skarbonka()
 {
-	gotówka = 150;
+	money = 150;
 }
 
 Skarbonka::Skarbonka(float a)
 {
-	gotówka = a ;
+	money = a ;
 }
 
-float Skarbonka::Zap³aæZaObiad() 
+float Skarbonka::PayForDinner() 
 { 
 	Posilek posilek;
-	gotówka -= posilek.getCena();
-	return (gotówka); 
+	money -= posilek.getCena();
+	return (money); 
 }
 
-float Skarbonka::Wp³aæNaObiad()
+float Skarbonka::WplacNaObiad()
 {
 	Posilek posilek;
-	gotówka += posilek.getCena();
-	return (gotówka);
+	money += posilek.getCena();
+	return (money);
 }
 
-float Skarbonka::getGotówka()
+float Skarbonka::getmoney()
 {
-	return (gotówka);
+	return (money);
 }

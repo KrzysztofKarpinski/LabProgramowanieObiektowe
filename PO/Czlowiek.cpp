@@ -2,22 +2,22 @@
 
 
 
-Cz這wiek::Cz這wiek(int a, string b, string c, float d)
+Czlowiek::Czlowiek(int a, string b, string c, float d)
 {
 
 }
 
-Cz這wiek::~Cz這wiek()
+Czlowiek::~Czlowiek()
 {
 }
 
-float Cz這wiek::SaldoPoWp豉cieNaObiad()
+float Czlowiek::SaldoPoWplacieNaObiad()
 {
 	Posilek cena;
 	return (saldo -= cena.getCena());
 }
 
-float Cz這wiek::getSaldo()
+float Czlowiek::getSaldo()
 {
 	return (saldo);
 }
