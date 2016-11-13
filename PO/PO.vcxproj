@@ -74,6 +74,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -110,6 +111,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Czlowiek.cpp" />
+    <ClCompile Include="Kasa.cpp" />
+    <ClCompile Include="Konto.cpp" />
+    <ClCompile Include="Posilek.cpp" />
+    <ClCompile Include="Pracownik.cpp" />
+    <ClCompile Include="Skarbonka.cpp" />
+    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="Stażysta.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Czlowiek.h" />
+    <ClInclude Include="Kasa.h" />
+    <ClInclude Include="Konto.h" />
+    <ClInclude Include="Posilek.h" />
+    <ClInclude Include="Pracownik.h" />
+    <ClInclude Include="Skarbonka.h" />
+    <ClInclude Include="Stażysta.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

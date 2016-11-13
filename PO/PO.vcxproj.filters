@@ -14,4 +14,53 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Posilek.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Skarbonka.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Konto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stażysta.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Pracownik.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Kasa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Czlowiek.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Posilek.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Skarbonka.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Konto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stażysta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Pracownik.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Kasa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Czlowiek.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
