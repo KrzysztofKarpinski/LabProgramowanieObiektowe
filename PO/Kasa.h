@@ -17,7 +17,9 @@ public:
 	
 	virtual ~Kasa();
 
-	void DodajKontoPracownika(Konto K);
+	void DodajKontoPracownika(Konto kontoWejsciowe);
+
+	bool JestNaLiscie(Konto kontoWejsciowe);
 
 	void PokazKonta();
 

@@ -3,7 +3,7 @@
 #include<stdio.h>
 #include<string>
 
-vector<Konto> Lista_Kont;
+vector<Konto> Lista_Kont;			//http://geosoft.no/development/cppstyle.html
 
 Kasa::Kasa()
 {
@@ -15,23 +15,29 @@ Kasa::~Kasa()
 
 }
 
-void Kasa::DodajKontoPracownika(Konto P)
+void Kasa::DodajKontoPracownika(Konto kontoWejsciowe)
 {
-	bool istnieje;
-	for (vector<Konto>::iterator konto = this->Lista_Kont.begin(); konto != this->Lista_Kont.end(); konto++)
+	if (!this->JestNaLiscie(kontoWejsciowe))		//jezeli konta nie ma na liœcie to
 	{
-		if (konto->getId() == P.getId())
-		{
-			cout << "Z³y Id" << endl;
-			istnieje = true;
-		}
+		//dodaj pracownika
 	}
-	if (istnieje = false)
+	else											//je¿eli jest to
 	{
-		Lista_Kont.push_back(P);
+		//Wyœwietl informacjê, ¿e u¿ytkownik ju¿ jest w systemie
 	}
 }
 
+bool Kasa::JestNaLiscie(Konto kontoWejsciowe)
+{
+	for (vector<Konto>::iterator konto = this->Lista_Kont.begin(); konto != this->Lista_Kont.end(); konto++)
+	{
+		if (konto->getId() == kontoWejsciowe.getId())
+		{
+			return true;
+		}
+	}
+	return false;
+}
 
 
 void PokazKonta()
