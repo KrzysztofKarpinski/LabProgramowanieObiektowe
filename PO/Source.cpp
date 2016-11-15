@@ -12,8 +12,9 @@
 using namespace std;
 
 int main()
-{
+{	
 	PracownikTest();
+
 
 	/*bool doexit=true;
 	int menu;

@@ -3,7 +3,7 @@
 
 void PracownikTest()
 {
-	Pracownik pracownik(1, "Jan", "Niezbedny", 120000);
+	Pracownik pracownik(1, "Jan", "Niezbedny", 120);
 
 	cout << pracownik.getId()<< endl;
 	cout << pracownik.getImie()<< endl;
@@ -11,9 +11,8 @@ void PracownikTest()
 	cout << pracownik.getSaldo() << endl;
 	cout << pracownik.Oddaj() << endl;
 	cout << pracownik.Pozycz() << endl;
-
 	cout << pracownik.SaldoPoWplacieNaObiad() << endl;
-	pracownik.Przywitanie();
+	pracownik.przywitanie();
 }
 
 void StazystaTest()
@@ -25,7 +24,7 @@ void StazystaTest()
 	cout << stazysta.getNazwisko() << endl;
 	cout << stazysta.getSaldo() << endl;
 	cout << stazysta.SaldoPoWplacieNaObiad() << endl;
-	stazysta.Przywitanie();
+	stazysta.przywitanie();
 }
 
 void CzlowiekTest()

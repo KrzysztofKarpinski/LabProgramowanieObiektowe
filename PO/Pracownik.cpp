@@ -4,7 +4,10 @@
 
 Pracownik::Pracownik(int a, string b, string c, float d) : Czlowiek()
 {
-
+	id = a;
+	imie = b;
+	nazwisko = c;
+	saldo = d;
 }
 
 int Pracownik::getId()
@@ -40,7 +43,7 @@ float Pracownik::Oddaj()
 	float ile;
 	cout << "Ile oddajesz?";
 	cin >> ile;
-	return (saldo += ile);
+	return (saldo -= ile);
 }
 
 float Pracownik::SaldoPoWplacieNaObiad()

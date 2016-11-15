@@ -2,7 +2,10 @@
 
 Stazysta::Stazysta(int a, string b, string c, float d) : Czlowiek()
 {
-
+	id = a;
+	imie = b;
+	nazwisko = c;
+	saldo = d;
 }
 
 int Stazysta::getId()

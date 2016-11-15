@@ -6,6 +6,10 @@
 #include"Skarbonka.h"
 #include"Stazysta.h"
 
+#include<iostream>
+#include<conio.h>
+
+
 
 void PracownikTest();
 void StazystaTest();
