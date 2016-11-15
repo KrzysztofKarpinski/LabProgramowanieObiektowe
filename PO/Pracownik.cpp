@@ -2,7 +2,7 @@
 
 
 
-Pracownik::Pracownik(int a, string b, string c, float d) : Cz³owiek(a,b,c,d)
+Pracownik::Pracownik(int a, string b, string c, float d) : Czlowiek(a,b,c,d)
 {
 
 }

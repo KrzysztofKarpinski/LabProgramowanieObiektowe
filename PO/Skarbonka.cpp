@@ -2,7 +2,7 @@
 
 Skarbonka::Skarbonka()
 {
-	money = 150;
+	money = 0;
 }
 
 Skarbonka::Skarbonka(float a)
@@ -10,7 +10,7 @@ Skarbonka::Skarbonka(float a)
 	money = a ;
 }
 
-float Skarbonka::PayForDinner() 
+float Skarbonka::ZaplacZaObiad() 
 { 
 	Posilek posilek;
 	money -= posilek.getCena();

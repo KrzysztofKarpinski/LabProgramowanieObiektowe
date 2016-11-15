@@ -12,7 +12,7 @@ public:
 	
 	friend float Posilek::getCena();
 
-	float PayForDinner();
+	float ZaplacZaObiad();
 
 	float WplacNaObiad();
 

@@ -2,7 +2,6 @@
 #include <string>
 #include<iostream>
 #include"Skarbonka.h"
-#include"Czlowiek.h"
 
 using namespace std;
 
@@ -21,6 +20,12 @@ public:
 	friend float Skarbonka::getmoney();
 
 	float SaldoPoWplacieNaObiad();
+
+	int getId();
+
+	string getImie();
+
+	string getNazwisko();
 
 	float getSaldo();
 };

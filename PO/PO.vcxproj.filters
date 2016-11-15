@@ -24,9 +24,6 @@
     <ClCompile Include="Skarbonka.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Konto.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Stażysta.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -45,9 +42,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Skarbonka.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Konto.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Stażysta.h">

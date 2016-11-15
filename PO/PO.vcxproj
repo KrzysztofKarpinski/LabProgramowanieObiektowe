@@ -113,7 +113,6 @@
   <ItemGroup>
     <ClCompile Include="Czlowiek.cpp" />
     <ClCompile Include="Kasa.cpp" />
-    <ClCompile Include="Konto.cpp" />
     <ClCompile Include="Posilek.cpp" />
     <ClCompile Include="Pracownik.cpp" />
     <ClCompile Include="Skarbonka.cpp" />
@@ -123,7 +122,6 @@
   <ItemGroup>
     <ClInclude Include="Czlowiek.h" />
     <ClInclude Include="Kasa.h" />
-    <ClInclude Include="Konto.h" />
     <ClInclude Include="Posilek.h" />
     <ClInclude Include="Pracownik.h" />
     <ClInclude Include="Skarbonka.h" />

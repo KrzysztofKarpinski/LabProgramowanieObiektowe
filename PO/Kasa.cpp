@@ -2,12 +2,16 @@
 #include "Kasa.h"
 #include<stdio.h>
 #include<string>
+#include<iostream>
+#include<fstream>
 
-vector<Konto> Lista_Kont;			//http://geosoft.no/development/cppstyle.html
+using namespace std;
+
+vector<Czlowiek> Lista_Ludzi;			//http://geosoft.no/development/cppstyle.html
 
 Kasa::Kasa()
 {
-	Lista_Kont.clear();
+	Lista_Ludzi.clear();
 }
 
 Kasa::~Kasa()
@@ -15,23 +19,35 @@ Kasa::~Kasa()
 
 }
 
-void Kasa::DodajKontoPracownika(Konto kontoWejsciowe)
+void Kasa::DodajKontoPracownika(Pracownik pracownik)
 {
-	if (!this->JestNaLiscie(kontoWejsciowe))		//jezeli konta nie ma na liœcie to
+	if (!this->JestNaLiscie(pracownik))		//jezeli konta nie ma na liœcie to
 	{
-		//dodaj pracownika
+		Lista_Ludzi.push_back(pracownik);//dodaj pracownika
 	}
 	else											//je¿eli jest to
 	{
-		//Wyœwietl informacjê, ¿e u¿ytkownik ju¿ jest w systemie
+		cout << "To Id jest ju¿ zajête" << endl;	//Wyœwietl informacjê, ¿e u¿ytkownik ju¿ jest w systemie
 	}
 }
 
-bool Kasa::JestNaLiscie(Konto kontoWejsciowe)
+void Kasa::DodajKontoStazysty(Stazysta stazysta)
 {
-	for (vector<Konto>::iterator konto = this->Lista_Kont.begin(); konto != this->Lista_Kont.end(); konto++)
+	if (!this->JestNaLiscie(stazysta))		//jezeli konta nie ma na liœcie to
 	{
-		if (konto->getId() == kontoWejsciowe.getId())
+		Lista_Ludzi.push_back(stazysta);//dodaj pracownika
+	}
+	else											//je¿eli jest to
+	{
+		cout << "To Id jest ju¿ zajête" << endl;	//Wyœwietl informacjê, ¿e u¿ytkownik ju¿ jest w systemie
+	}
+}
+
+bool Kasa::JestNaLiscie(Czlowiek kontoWejsciowe)
+{
+	for (vector<Czlowiek>::iterator czlowiek= this->Lista_Ludzi.begin(); czlowiek!= this->Lista_Ludzi.end(); czlowiek++)
+	{
+		if (czlowiek->getId() == kontoWejsciowe.getId())
 		{
 			return true;
 		}
@@ -40,12 +56,44 @@ bool Kasa::JestNaLiscie(Konto kontoWejsciowe)
 }
 
 
-void PokazKonta()
+void Kasa::PokazKonta()
 {
 
 }
 
-void UsuñKonto()
+
+float Kasa::PokazLaczneSaldo()
+{
+	float suma=0;
+	for (vector<Czlowiek>::iterator czlowiek = this->Lista_Ludzi.begin(); czlowiek != this->Lista_Ludzi.end(); czlowiek++)
+	{
+		suma += czlowiek->getSaldo();
+	}
+	return suma;
+}
+
+void Kasa::UsunKonto(int Id)
+{
+	for (vector<Czlowiek>::iterator czlowiek = this->Lista_Ludzi.begin(); czlowiek != this->Lista_Ludzi.end(); czlowiek++)
+	{
+		if (czlowiek->getId() == Id)
+		{
+			Lista_Ludzi.erase(czlowiek);
+		}
+	}
+}
+
+void Kasa::Wczytaj()
+{
+	cout << "Jestem tu!" << endl << endl;
+	fstream plik;
+	plik.open("Zapis.txt", ios::app | ios::in | ios::out);
+	string dane;
+	getline(plik, dane);
+	cout << "Wczytane!" << endl << endl;
+}
+
+void Kasa::Zapisz()
 {
 
 }
