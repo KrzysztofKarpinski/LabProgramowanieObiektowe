@@ -3,7 +3,7 @@
 #include<vector>
 #include"Czlowiek.h"
 #include"Pracownik.h"
-#include"Sta¿ysta.h"
+#include"Stazysta.h"
 #include<string>
 
 using namespace std;
@@ -11,7 +11,8 @@ using namespace std;
 class Kasa
 {
 public:
-	vector<Czlowiek> Lista_Ludzi;
+	vector<Stazysta> Lista_Stazystow;
+	vector<Pracownik> Lista_Pracownikow;
 
 	Kasa();
 	
@@ -19,19 +20,19 @@ public:
 
 	void DodajKontoPracownika(Pracownik pracownik);
 
+	bool JestNaLiscie(Pracownik kontoWejsciowePracownika);
+
 	void DodajKontoStazysty(Stazysta stazysta);
 
-	bool JestNaLiscie(Czlowiek kontoWejsciowe);
+	bool JestNaLiscie(Stazysta kontoWejscioweStazysty);
 
 	void PokazKonta();
 
 	float PokazLaczneSaldo();
 
-	friend float Czlowiek::getSaldo();
+	//friend float Czlowiek::getSaldo();
 
-	void UsunKonto(int Id);
+	void UsunKontoStazysty(int Id);
 
 	void Wczytaj();
-
-	void Zapisz();
 };

@@ -7,11 +7,13 @@
 
 using namespace std;
 
-vector<Czlowiek> Lista_Ludzi;			//http://geosoft.no/development/cppstyle.html
+vector<Stazysta> Lista_Stazystow;
+vector<Pracownik> Lista_Pracownikow;							//http://geosoft.no/development/cppstyle.html
 
 Kasa::Kasa()
 {
-	Lista_Ludzi.clear();
+	Lista_Stazystow.clear();
+	Lista_Pracownikow.clear();
 }
 
 Kasa::~Kasa()
@@ -23,19 +25,32 @@ void Kasa::DodajKontoPracownika(Pracownik pracownik)
 {
 	if (!this->JestNaLiscie(pracownik))		//jezeli konta nie ma na liœcie to
 	{
-		Lista_Ludzi.push_back(pracownik);//dodaj pracownika
+		Lista_Pracownikow.push_back(pracownik);//dodaj pracownika
 	}
 	else											//je¿eli jest to
 	{
 		cout << "To Id jest ju¿ zajête" << endl;	//Wyœwietl informacjê, ¿e u¿ytkownik ju¿ jest w systemie
 	}
 }
+
+bool Kasa::JestNaLiscie(Pracownik kontoWejsciowePracownika)
+{
+	for (vector<Pracownik>::iterator pracownik = this->Lista_Pracownikow.begin(); pracownik != this->Lista_Pracownikow.end(); pracownik++)
+	{
+		if (pracownik->getId() == kontoWejsciowePracownika.getId())
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 
 void Kasa::DodajKontoStazysty(Stazysta stazysta)
 {
 	if (!this->JestNaLiscie(stazysta))		//jezeli konta nie ma na liœcie to
 	{
-		Lista_Ludzi.push_back(stazysta);//dodaj pracownika
+		Lista_Stazystow.push_back(stazysta);//dodaj pracownika
 	}
 	else											//je¿eli jest to
 	{
@@ -43,11 +58,11 @@ void Kasa::DodajKontoStazysty(Stazysta stazysta)
 	}
 }
 
-bool Kasa::JestNaLiscie(Czlowiek kontoWejsciowe)
+bool Kasa::JestNaLiscie(Stazysta kontoWejscioweStazysty)
 {
-	for (vector<Czlowiek>::iterator czlowiek= this->Lista_Ludzi.begin(); czlowiek!= this->Lista_Ludzi.end(); czlowiek++)
+	for (vector<Stazysta>::iterator stazysta= this->Lista_Stazystow.begin(); stazysta!= this->Lista_Stazystow.end(); stazysta++)
 	{
-		if (czlowiek->getId() == kontoWejsciowe.getId())
+		if (stazysta->getId() == kontoWejscioweStazysty.getId())
 		{
 			return true;
 		}
@@ -64,24 +79,32 @@ void Kasa::PokazKonta()
 
 float Kasa::PokazLaczneSaldo()
 {
-	float suma=0;
-	for (vector<Czlowiek>::iterator czlowiek = this->Lista_Ludzi.begin(); czlowiek != this->Lista_Ludzi.end(); czlowiek++)
+	float suma1=0;
+	float suma2 = 0;
+	for (vector<Pracownik>::iterator pracownik = this->Lista_Pracownikow.begin(); pracownik != this->Lista_Pracownikow.end(); pracownik++)
 	{
-		suma += czlowiek->getSaldo();
+		suma1 += pracownik->getSaldo();
 	}
-	return suma;
+	for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
+	{
+		suma2 += stazysta->getSaldo();
+	}
+	return (suma1 + suma2);
 }
 
-void Kasa::UsunKonto(int Id)
+void Kasa::UsunKontoStazysty(int Id)
 {
-	for (vector<Czlowiek>::iterator czlowiek = this->Lista_Ludzi.begin(); czlowiek != this->Lista_Ludzi.end(); czlowiek++)
+	for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
 	{
-		if (czlowiek->getId() == Id)
+		if (stazysta->getId() == Id)
 		{
-			Lista_Ludzi.erase(czlowiek);
+			Lista_Stazystow.erase(stazysta);
 		}
 	}
 }
+
+
+
 
 void Kasa::Wczytaj()
 {
@@ -91,9 +114,4 @@ void Kasa::Wczytaj()
 	string dane;
 	getline(plik, dane);
 	cout << "Wczytane!" << endl << endl;
-}
-
-void Kasa::Zapisz()
-{
-
 }

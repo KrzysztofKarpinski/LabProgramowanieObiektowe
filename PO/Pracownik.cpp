@@ -2,9 +2,29 @@
 
 
 
-Pracownik::Pracownik(int a, string b, string c, float d) : Czlowiek(a,b,c,d)
+Pracownik::Pracownik(int a, string b, string c, float d) : Czlowiek()
 {
 
+}
+
+int Pracownik::getId()
+{
+	return id;
+}
+
+string Pracownik::getImie()
+{
+	return imie;
+}
+
+string Pracownik::getNazwisko()
+{
+	return nazwisko;
+}
+
+float Pracownik::getSaldo()
+{
+	return saldo;
 }
 
 float Pracownik::Pozycz()
@@ -21,4 +41,15 @@ float Pracownik::Oddaj()
 	cout << "Ile oddajesz?";
 	cin >> ile;
 	return (saldo += ile);
+}
+
+float Pracownik::SaldoPoWplacieNaObiad()
+{
+	Posilek cena;
+	return (saldo -= cena.getCena());
+}
+
+void Pracownik::przywitanie()
+{
+	cout << "Jestem Pracownikiem! :D" << endl;
 }

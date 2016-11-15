@@ -24,9 +24,6 @@
     <ClCompile Include="Skarbonka.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Stażysta.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Pracownik.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -34,6 +31,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Czlowiek.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Stazysta.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -44,9 +47,6 @@
     <ClInclude Include="Skarbonka.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Stażysta.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Pracownik.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -54,6 +54,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Czlowiek.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stazysta.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tests.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

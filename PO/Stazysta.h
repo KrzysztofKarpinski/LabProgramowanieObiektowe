@@ -1,7 +1,7 @@
 #pragma once
 #include"Czlowiek.h"
 
-class Pracownik : public Czlowiek
+class Stazysta : public Czlowiek
 {
 public:
 	int id;
@@ -9,7 +9,7 @@ public:
 	string nazwisko;
 	float saldo;
 
-	Pracownik(int a, string b, string c, float d);
+	Stazysta(int a, string b, string c, float d);
 
 	int getId();
 
@@ -18,10 +18,6 @@ public:
 	string getNazwisko();
 
 	float getSaldo();
-
-	float Pozycz();
-
-	float Oddaj();
 
 	float SaldoPoWplacieNaObiad();
 
