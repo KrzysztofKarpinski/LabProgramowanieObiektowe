@@ -73,7 +73,17 @@ bool Kasa::JestNaLiscie(Stazysta kontoWejscioweStazysty)
 
 void Kasa::PokazKonta()
 {
+	fstream plik("Zapis.txt", ios::in); //zak³adamy, ¿e plik istnieje
+	char bufor[1024];
+	plik.read(bufor, 1024); //wczytuje tyle danych ile siê zmieœci do bufora
+	std::cout << "Wczytano " << plik.gcount() << " bajtów do bufora" << std::endl;
+	
+	for (int i = 0;i < bufor[1024];i++)
+	{
+		cout << bufor << endl;
+	}
 
+	
 }
 
 

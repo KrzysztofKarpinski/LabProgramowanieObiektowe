@@ -43,7 +43,12 @@ float Pracownik::Oddaj()
 	float ile;
 	cout << "Ile oddajesz?";
 	cin >> ile;
-	return (saldo -= ile);
+	if (saldo >= ile)
+	{
+		return (saldo -= ile);
+	}
+	else
+		cout << "Brak wystarczajacych srodkow na koncie!" << endl;
 }
 
 float Pracownik::SaldoPoWplacieNaObiad()

@@ -31,7 +31,13 @@ float Stazysta::getSaldo()
 float Stazysta::SaldoPoWplacieNaObiad()
 {
 	Posilek cena;
-	return (saldo -= cena.getCena());
+	float cena1 = cena.getCena();
+	if (saldo >= cena1)
+	{
+		return (saldo -= cena1);
+	}
+	else
+		cout << "Nie stac Cie na obiad!" << endl;
 }
 
 void Stazysta::przywitanie()
