@@ -20,9 +20,8 @@ int main()
 	//SkarbonkaTest();
 	//PosilekTest();
 	//KasaTest();
+	//Przyklad();
 	Kasa kasa;
-
-	Przyklad();
 
 	bool doexit=true;
 	int menu;
