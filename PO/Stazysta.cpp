@@ -48,3 +48,11 @@ void Stazysta::przywitanie()
 	cout << "Jestem Stazysta! :D" << endl << "Moje imie to " << this->getImie() << endl << "Moje nazwisko to " 
 		<< this->getNazwisko() << endl << "Moje id to " << this->getId() << endl << endl;
 }
+
+string Stazysta::toString()
+{
+	return to_string(this->getId()) + "\n"
+		+ this->getImie() + "\n"
+		+ this->getNazwisko() + "\n"
+		+ to_string(this->getSaldo()) + "\n";
+}

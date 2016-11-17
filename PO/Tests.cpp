@@ -1,6 +1,6 @@
 #include"Tests.h"
 #include<fstream>
-
+#include <iostream>
 
 void PracownikTest()
 {
@@ -64,7 +64,7 @@ void KasaTest()
 	Kasa Wczytaj();
 }
 
-void Przyklad()
+void StazysciPracownicyTworzenieTest()
 {
 	cout << "Przyklad: " << endl;
 	Pracownik P1(1, "Janek", "Maci", 7889.3);
@@ -78,9 +78,10 @@ void Przyklad()
 	plik.open("Zapis.txt", ios::app | ios::in | ios::out);
 	if (plik.good() == true)
 	{
-
 		cout << "Uzyskano dostep do pliku!" << endl;
-		//tu operacje na pliku
+		string stazysta = S1.toString();
+		plik << stazysta;
+		plik.close();
 	}
 	else cout << "Dostep do pliku zostal zabroniony!" << endl;
 

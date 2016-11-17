@@ -26,5 +26,7 @@ public:
 	float SaldoPoWplacieNaObiad();
 
 	void przywitanie();
+
+	string toString();
 };
 
