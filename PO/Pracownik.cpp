@@ -1,7 +1,5 @@
 #include "Pracownik.h"
 
-
-
 Pracownik::Pracownik(int a, string b, string c, float d) : Czlowiek()
 {
 	id = a;

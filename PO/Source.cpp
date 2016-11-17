@@ -13,7 +13,8 @@ using namespace std;
 
 int main()
 {	
-	PracownikTest();
+	StazystaTest();
+
 
 
 	/*bool doexit=true;
@@ -33,6 +34,7 @@ int main()
 		if (menu == 7) return (doexit=false);
 		
 	}*/
+	cin.ignore();			//Zatrzymuje dzia³anie programu - u¿ytkownik mo¿e wpisaæ cokolwiek
 	system("pause");
 	return 0;
 }

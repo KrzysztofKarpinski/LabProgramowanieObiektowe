@@ -1,8 +1,11 @@
 #include "Stazysta.h"
 
-Stazysta::Stazysta(int a, string b, string c, float d) : Czlowiek()
+int Stazysta::idBiezace = 100;			//Te dwie zmienne s¹ takie same dla KLASY - nie dla obiektu
+int Stazysta::idMaksymalne = 199;
+
+Stazysta::Stazysta(string b, string c, float d) : Czlowiek()
 {
-	id = a;
+	id = Stazysta::idBiezace++;
 	imie = b;
 	nazwisko = c;
 	saldo = d;
@@ -36,5 +39,6 @@ float Stazysta::SaldoPoWplacieNaObiad()
 
 void Stazysta::przywitanie()
 {
-	cout << "Jestem Stazysta! :D" << endl;
+	cout << "Jestem Stazysta! :D" << endl << "Moje imie to " << this->getImie() << endl << "Moje nazwisko to " 
+		<< this->getNazwisko() << endl << "Moje id to " << this->getId() << endl << endl;
 }
