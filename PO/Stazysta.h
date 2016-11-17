@@ -3,13 +3,17 @@
 
 class Stazysta : public Czlowiek
 {
+private:
+	static int idBiezace;
+	static int idMaksymalne;
+
 public:
 	int id;
 	string imie;
 	string nazwisko;
 	float saldo;
 
-	Stazysta(int a, string b, string c, float d);
+	Stazysta(string b, string c, float d);
 
 	int getId();
 

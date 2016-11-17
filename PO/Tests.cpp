@@ -18,7 +18,7 @@ void PracownikTest()
 
 void StazystaTest()
 {
-	Stazysta stazysta(12, "Jasiu", "Pacula", 12.7);
+	Stazysta stazysta("Jasiu", "Pacula", 1245.7);
 
 	cout << stazysta.getId() << endl;
 	cout << stazysta.getImie() << endl;
