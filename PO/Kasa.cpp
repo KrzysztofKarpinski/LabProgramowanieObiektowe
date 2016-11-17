@@ -76,7 +76,7 @@ void Kasa::PokazKonta()
 	cout << "Wczytywanie: " << endl;
 	fstream plik;
 	plik.open("Zapis.txt", ios::in | ios::out);
-	if (plik.good)
+	if (plik.good())
 	{
 		string napis;
 		cout << endl;
