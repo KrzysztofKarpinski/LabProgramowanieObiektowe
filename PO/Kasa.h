@@ -37,4 +37,6 @@ public:
 	void UsunKontoStazysty(int Id);
 
 	void Wczytaj();
+
+	void ZapiszStazystow();
 };

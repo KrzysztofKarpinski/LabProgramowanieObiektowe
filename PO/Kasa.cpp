@@ -146,3 +146,21 @@ void Kasa::UsunKontoStazysty(int Id)
 		}
 	}
 }
+
+void Kasa::ZapiszStazystow()
+{
+	ofstream os("Zapis.txt");										//ten dosyæ brzydki zabieg czyœci ca³¹ zawartoœæ pliku
+	fstream plik;
+	plik.open("Zapis.txt", ios::app | ios::in | ios::out);			
+	if (plik.good() == true)										
+	{
+		cout << "Uzyskano dostep do pliku!" << endl;
+		for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
+		{
+			plik << stazysta->toString();
+		}
+		
+		plik.close();
+	}
+	else cout << "Dostep do pliku zostal zabroniony!" << endl;
+}

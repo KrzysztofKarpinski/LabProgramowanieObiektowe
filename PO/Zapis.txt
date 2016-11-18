@@ -1,8 +1,8 @@
-101
-Alan
-Walker
-67868.398438
-102
-Darek
-Just
-67687.203125
+103
+Jan
+Michnik
+543.200012
+104
+Janusz
+Zajac
+46721.101563

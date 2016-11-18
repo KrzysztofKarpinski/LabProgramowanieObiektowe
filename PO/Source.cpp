@@ -16,9 +16,9 @@ int main()
 	Kasa kasa;
 	StazysciPracownicyTworzenieTest();
 	//kasa.ZapiszStazystow();
-	kasa.WczytajKonta();
+	//kasa.WczytajKonta();
 	kasa.PokazKontaStazystow();
-
+	kasa.ZapiszStazystow();
 
 	/*bool doexit=true;
 	int menu;
