@@ -17,4 +17,4 @@ void CzlowiekTest();
 void SkarbonkaTest();
 void PosilekTest();
 void KasaTest();
-void Przyklad();
+void StazysciPracownicyTworzenieTest();
