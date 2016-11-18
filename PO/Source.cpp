@@ -13,8 +13,9 @@ using namespace std;
 
 int main()
 {	
-	StazysciPracownicyTworzenieTest();
-
+	Kasa kasa;
+	//StazysciPracownicyTworzenieTest();
+	kasa.PokazKonta();
 
 
 	/*bool doexit=true;

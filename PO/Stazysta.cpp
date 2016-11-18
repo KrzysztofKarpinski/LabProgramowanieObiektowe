@@ -11,6 +11,15 @@ Stazysta::Stazysta(string b, string c, float d) : Czlowiek()
 	saldo = d;
 }
 
+
+Stazysta::Stazysta(int a, string b, string c, float d) : Czlowiek()
+{
+	id = a;
+	imie = b;
+	nazwisko = c;
+	saldo = d;
+}
+
 int Stazysta::getId()
 {
 	return id;
@@ -54,5 +63,5 @@ string Stazysta::toString()
 	return to_string(this->getId()) + "\n"
 		+ this->getImie() + "\n"
 		+ this->getNazwisko() + "\n"
-		+ to_string(this->getSaldo()) + "\n";
+		+ to_string(this->getSaldo()) + "\n" + "\n";
 }

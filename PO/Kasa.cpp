@@ -4,6 +4,7 @@
 #include<string>
 #include<iostream>
 #include<fstream>
+#include<sstream>
 
 using namespace std;
 
@@ -82,9 +83,34 @@ void Kasa::PokazKonta()
 		cout << endl;
 		while (!plik.eof())
 		{
-			cout << "what" << endl;
-			getline(plik, napis);
-			cout << napis << endl;
+			int i = 1;
+			if (i % 5 == 0)
+			{
+				getline(plik, napis);
+				int id;
+				istringstream iss(napis);
+				iss >> i;
+				cout << i << endl;
+			}
+			if (i % 5 == 1)
+			{
+				getline(plik, napis);
+				cout << napis << endl;
+			}
+			if (i % 5 == 2)
+			{
+				getline(plik, napis);
+				cout << napis << endl;
+			}
+			if (i % 5 == 3)
+			{
+				getline(plik, napis);
+				float id;
+				istringstream iss(napis);
+				iss >> i;
+				cout << i << endl;
+			}
+			i++;
 		}
 		plik.close();
 	}

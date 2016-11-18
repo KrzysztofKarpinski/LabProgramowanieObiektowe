@@ -15,6 +15,8 @@ public:
 
 	Stazysta(string b, string c, float d);
 
+	Stazysta(int a, string b, string c, float d);
+
 	int getId();
 
 	string getImie();
@@ -26,5 +28,7 @@ public:
 	float SaldoPoWplacieNaObiad();
 
 	void przywitanie();
+
+	string toString();
 };
 
