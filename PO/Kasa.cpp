@@ -72,9 +72,9 @@ bool Kasa::JestNaLiscie(Stazysta kontoWejscioweStazysty)
 }
 
 
-void Kasa::WczytajKonta()
+void Kasa::WczytajKontaStazystow()
 {
-	cout << "Wczytywanie: " << endl;
+	//cout << "Wczytywanie: " << endl;
 	fstream plik;
 	plik.open("Zapis.txt", ios::in | ios::out);
 	if (plik.good())
@@ -121,7 +121,7 @@ void Kasa::PokazKontaStazystow()
 	}
 }
 
-float Kasa::PokazLaczneSaldo()
+void Kasa::PokazLaczneSaldo()
 {
 	float suma1=0;
 	float suma2 = 0;
@@ -133,7 +133,8 @@ float Kasa::PokazLaczneSaldo()
 	{
 		suma2 += stazysta->getSaldo();
 	}
-	return (suma1 + suma2);
+	float suma = suma1 + suma2;
+	cout << suma << endl;
 }
 
 void Kasa::UsunKontoStazysty(int Id)
@@ -143,6 +144,7 @@ void Kasa::UsunKontoStazysty(int Id)
 		if (stazysta->getId() == Id)
 		{
 			Lista_Stazystow.erase(stazysta);
+			break;
 		}
 	}
 }
@@ -154,7 +156,7 @@ void Kasa::ZapiszStazystow()
 	plik.open("Zapis.txt", ios::app | ios::in | ios::out);			
 	if (plik.good() == true)										
 	{
-		cout << "Uzyskano dostep do pliku!" << endl;
+		//cout << "Uzyskano dostep do pliku!" << endl;
 		for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
 		{
 			plik << stazysta->toString();

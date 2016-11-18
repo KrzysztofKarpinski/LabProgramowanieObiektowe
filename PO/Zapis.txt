@@ -1,8 +1,4 @@
-103
-Jan
-Michnik
-543.200012
-104
-Janusz
-Zajac
-46721.101563
+100
+Krzysztof
+Karpinski
+-162.500000

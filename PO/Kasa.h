@@ -26,17 +26,15 @@ public:
 
 	bool JestNaLiscie(Stazysta kontoWejscioweStazysty);
 
-	void WczytajKonta();
+	void WczytajKontaStazystow();
 
 	void PokazKontaStazystow();
 
-	float PokazLaczneSaldo();
+	void PokazLaczneSaldo();
 
 	//friend float Czlowiek::getSaldo();
 
 	void UsunKontoStazysty(int Id);
-
-	void Wczytaj();
 
 	void ZapiszStazystow();
 };
