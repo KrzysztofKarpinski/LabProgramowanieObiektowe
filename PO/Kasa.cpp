@@ -72,45 +72,38 @@ bool Kasa::JestNaLiscie(Stazysta kontoWejscioweStazysty)
 }
 
 
-void Kasa::PokazKonta()
+void Kasa::WczytajKonta()
 {
 	cout << "Wczytywanie: " << endl;
 	fstream plik;
 	plik.open("Zapis.txt", ios::in | ios::out);
 	if (plik.good())
 	{
-		string napis;
-		cout << endl;
+		bool flag = true;
+		string linie[4];								//Zamiast tworzyæ cztery ró¿ne zmienne mo¿na zapisaæ wszsystkie cztery informacje o u¿ytkowniku w jednej tablicy
 		while (!plik.eof())
 		{
-			int i = 1;
-			if (i % 5 == 0)
+			for (int i = 0; i < 4; i++)					//Wczytaj dane jednego u¿ytkownika
 			{
-				getline(plik, napis);
-				int id;
-				istringstream iss(napis);
-				iss >> i;
-				cout << i << endl;
+				if (plik.eof())							//sprawdzamy to za ka¿dym razem, gdy¿ u¿ytkownicy s¹ zapisywani ze znakiem nowej liniii na koñcu - daj breakpoint na for i uruchom debugger, przeklikaj do konca pliku
+				{
+					flag = false;
+					break;
+				}
+				getline(plik, linie[i]);	
 			}
-			if (i % 5 == 1)
+
+			if(flag)
 			{
-				getline(plik, napis);
-				cout << napis << endl;
+				Stazysta *stazysta = new Stazysta(
+					stoi(linie[0]),						//stoi = string to int
+					linie[1],
+					linie[2],
+					stof(linie[3])						//stof = string to float
+					);
+
+				Lista_Stazystow.push_back(*stazysta);
 			}
-			if (i % 5 == 2)
-			{
-				getline(plik, napis);
-				cout << napis << endl;
-			}
-			if (i % 5 == 3)
-			{
-				getline(plik, napis);
-				float id;
-				istringstream iss(napis);
-				iss >> i;
-				cout << i << endl;
-			}
-			i++;
 		}
 		plik.close();
 	}
@@ -118,6 +111,15 @@ void Kasa::PokazKonta()
 		cout << "Blad";
 }
 
+void Kasa::PokazKontaStazystow()
+{
+	int i = 0;
+	for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
+	{
+		cout << "Stazysta numer " << i++ << ":" << endl;
+		cout << stazysta->toString() << endl;
+	}
+}
 
 float Kasa::PokazLaczneSaldo()
 {
@@ -143,17 +145,4 @@ void Kasa::UsunKontoStazysty(int Id)
 			Lista_Stazystow.erase(stazysta);
 		}
 	}
-}
-
-
-
-
-void Kasa::Wczytaj()
-{
-	cout << "Jestem tu!" << endl << endl;
-	fstream plik;
-	plik.open("Zapis.txt", ios::app | ios::in | ios::out);
-	string dane;
-	getline(plik, dane);
-	cout << "Wczytane!" << endl << endl;
 }

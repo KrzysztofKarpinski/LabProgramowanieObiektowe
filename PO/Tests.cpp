@@ -74,16 +74,18 @@ void StazysciPracownicyTworzenieTest()
 	Stazysta S2("Alan", "Walker", 67868.4);
 	Stazysta S3("Darek", "Just", 67687.2);
 
-	fstream plik;
-	plik.open("Zapis.txt", ios::app | ios::in | ios::out);
-	if (plik.good() == true)
-	{
 
+	//********************************************************************
+	ofstream os("Zapis.txt");										//ten dosyæ brzydki zabieg czyœci ca³¹ zawartoœæ pliku
+	fstream plik;
+	plik.open("Zapis.txt", ios::app | ios::in | ios::out);			//to, co jest miêdzy giwazdkami - wydziel do osobnej funkcji Kasa::ZapiszStazystow()
+	if (plik.good() == true)										//dodatkowozmieñ tak, zeby zamiast zapisywac S2, S1... iterowa³ po wszystkich stazystach z listy
+	{
 		std::cout << "Uzyskano dostep do pliku!" << std::endl;
-		string stazysta = S2.toString();
-		plik << stazysta;
+		plik << S2.toString();
+		plik << S3.toString();
 		plik.close();
 	}
 	else std::cout << "Dostep do pliku zostal zabroniony!" << std::endl;
-
+	//**********************************************************************
 }

@@ -26,7 +26,9 @@ public:
 
 	bool JestNaLiscie(Stazysta kontoWejscioweStazysty);
 
-	void PokazKonta();
+	void WczytajKonta();
+
+	void PokazKontaStazystow();
 
 	float PokazLaczneSaldo();
 

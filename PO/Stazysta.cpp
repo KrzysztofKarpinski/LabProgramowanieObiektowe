@@ -63,5 +63,5 @@ string Stazysta::toString()
 	return to_string(this->getId()) + "\n"
 		+ this->getImie() + "\n"
 		+ this->getNazwisko() + "\n"
-		+ to_string(this->getSaldo()) + "\n" + "\n";
+		+ to_string(this->getSaldo()) + "\n";
 }
