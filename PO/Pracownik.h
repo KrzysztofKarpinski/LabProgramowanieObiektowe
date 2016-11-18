@@ -3,11 +3,16 @@
 
 class Pracownik : public Czlowiek
 {
+private:
+	static int idBiezace;
+	static int idMaksymalne;
 public:
 	int id;
 	string imie;
 	string nazwisko;
 	float saldo;
+
+	Pracownik(string b, string c, float d);
 
 	Pracownik(int a, string b, string c, float d);
 
@@ -19,6 +24,8 @@ public:
 
 	float getSaldo();
 
+	float setSaldo(float saldo1);
+
 	float Pozycz();
 
 	float Oddaj();
@@ -26,5 +33,7 @@ public:
 	float SaldoPoWplacieNaObiad();
 
 	void przywitanie();
+
+	string toString();
 };
 

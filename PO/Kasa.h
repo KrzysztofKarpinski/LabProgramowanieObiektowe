@@ -28,7 +28,11 @@ public:
 
 	void WczytajKontaStazystow();
 
+	void WczytajKontaPracownikow();
+
 	void PokazKontaStazystow();
+
+	void PokazKontaPracownikow();
 
 	void PokazLaczneSaldo();
 
@@ -36,5 +40,13 @@ public:
 
 	void UsunKontoStazysty(int Id);
 
+	void UsunKontoPracownika(int Id);
+
 	void ZapiszStazystow();
+
+	void ZapiszPracownikow();
+
+	void Przelew();
+
+	void ZmianaSalda();
 };

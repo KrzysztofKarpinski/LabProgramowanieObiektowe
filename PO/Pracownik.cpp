@@ -1,5 +1,16 @@
 #include "Pracownik.h"
 
+int Pracownik::idBiezace = 0;			//Te dwie zmienne s¹ takie same dla KLASY - nie dla obiektu
+int Pracownik::idMaksymalne = 99;
+
+Pracownik::Pracownik(string b, string c, float d) : Czlowiek()
+{
+	id = Pracownik::idBiezace++;
+	imie = b;
+	nazwisko = c;
+	saldo = d;
+}
+
 Pracownik::Pracownik(int a, string b, string c, float d) : Czlowiek()
 {
 	id = a;
@@ -25,6 +36,12 @@ string Pracownik::getNazwisko()
 
 float Pracownik::getSaldo()
 {
+	return saldo;
+}
+
+float Pracownik::setSaldo(float saldo1)
+{
+	saldo = saldo1;
 	return saldo;
 }
 
@@ -58,4 +75,12 @@ float Pracownik::SaldoPoWplacieNaObiad()
 void Pracownik::przywitanie()
 {
 	cout << "Jestem Pracownikiem! :D" << endl;
+}
+
+string Pracownik::toString()
+{
+	return to_string(this->getId()) + "\n"
+		+ this->getImie() + "\n"
+		+ this->getNazwisko() + "\n"
+		+ to_string(this->getSaldo()) + "\n";
 }

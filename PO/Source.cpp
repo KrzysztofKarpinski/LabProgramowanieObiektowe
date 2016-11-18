@@ -25,6 +25,7 @@ int main()
 	int menu;
 	
 	kasa.WczytajKontaStazystow();
+	kasa.WczytajKontaPracownikow();
 
 	while (doexit == true)
 	{
@@ -34,7 +35,21 @@ int main()
 		cin >> menu;
 		if (menu == 1)
 		{
+			cout << "Imie, nazwisko, saldo" << endl;
 
+			string imie;
+			cin >> imie;
+
+			string nazwisko;
+			cin >> nazwisko;
+
+			float saldo;
+			cin >> saldo;
+
+			Pracownik P(imie, nazwisko, saldo);
+
+			kasa.DodajKontoPracownika(P);
+			kasa.ZapiszPracownikow();
 		}
 
 		if (menu == 2)
@@ -58,7 +73,10 @@ int main()
 
 		if (menu == 3)
 		{
-
+			int n;
+			cin >> n;
+			kasa.UsunKontoPracownika(n);
+			kasa.ZapiszPracownikow();
 		}
 
 		if (menu == 4)
@@ -71,13 +89,16 @@ int main()
 
 		if (menu == 5)
 		{
-			//Kasa::EdytujSaldo;
+
+			kasa.ZmianaSalda();
+			kasa.ZapiszPracownikow();
 		}
 
 		
 		if (menu == 6)
 		{
-			//Wykonaj przelew
+			kasa.Przelew();
+			kasa.ZapiszPracownikow();
 		}
 		if (menu == 7)
 		{
@@ -86,6 +107,7 @@ int main()
 		
 		if (menu == 8)
 		{
+			kasa.PokazKontaPracownikow();
 			kasa.PokazKontaStazystow();
 		}
 		
