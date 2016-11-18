@@ -2,7 +2,6 @@
 #include<fstream>
 #include<iostream>
 
-
 void PracownikTest()
 {
 	Pracownik pracownik(1, "Jan", "Niezbedny", 120);

@@ -129,6 +129,9 @@
     <ClInclude Include="Stazysta.h" />
     <ClInclude Include="Tests.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="Zapis.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
