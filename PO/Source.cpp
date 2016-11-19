@@ -14,6 +14,9 @@ using namespace std;
 int main()
 {	
 	Kasa kasa;
+	
+	MapyTest(kasa);
+
 	//StazysciPracownicyTworzenieTest();
 	//kasa.ZapiszStazystow();
 	//kasa.WczytajKonta();

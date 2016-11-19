@@ -17,6 +17,11 @@ Pracownik::Pracownik(int a, string b, string c, float d) : Czlowiek()
 	imie = b;
 	nazwisko = c;
 	saldo = d;
+
+	if (Pracownik::idBiezace <= id)
+	{
+		Pracownik::idBiezace = id + 1;
+	}
 }
 
 int Pracownik::getId()

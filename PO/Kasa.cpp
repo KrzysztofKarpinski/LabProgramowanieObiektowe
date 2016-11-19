@@ -5,11 +5,14 @@
 #include<iostream>
 #include<fstream>
 #include<sstream>
+#include <map>
 
 using namespace std;
 
 vector<Stazysta> Lista_Stazystow;
 vector<Pracownik> Lista_Pracownikow;							//http://geosoft.no/development/cppstyle.html
+map<Czlowiek, double> ListaDlugow;
+
 
 Kasa::Kasa()
 {
@@ -371,3 +374,69 @@ void  Kasa::ZaplacZaObiad()
 		i++;
 	}
 }
+
+void Kasa::ZamowGrupowo()
+{
+	double zaplacono;
+	double rachunek;
+	string identyfikator;
+
+	try
+	{
+		cout << "Podaj kwote, jaka zaplacono: ";
+		cin >> zaplacono;
+		cout << endl << "Podaj kwote, na jaka opiewa rachunek: ";
+		cin >> rachunek;
+	}
+	catch(string exception)
+	{
+		cout << "Wprowadzono niepoprawna wartosc" << endl;
+		cout << exception << endl;
+		cout << "Program wyjdzie z funkcji" << endl;
+		return;
+	}
+	cout << endl << endl << "Podaj identyfikatory kupujacych lub 'x', jesli skonczyles je wprowadzac." 
+		<< endl << "**************************" << endl;
+	cin >> identyfikator;
+
+	double dlug = zaplacono / rachunek;
+	vector<int> zrzutkowcy;
+
+	while (identyfikator != "x")
+	{
+		try
+		{
+			zrzutkowcy.push_back(stoi(identyfikator));
+			cin >> identyfikator;
+		}
+		catch (string exception)
+		{
+			cout << "Niepoprawny format. Sprobuj jeszcze raz.";
+		}
+	}
+
+	cout << "**************************" << endl;
+
+	for (auto id = zrzutkowcy.begin(); id != zrzutkowcy.end(); id++)
+	{
+		if(this->listaDlugow.count(*id) == 0)
+		{
+			this->listaDlugow[*id] = dlug;
+		}
+		else
+		{
+			this->listaDlugow[*id] += dlug;
+		}
+	}
+
+	cout << "Zamowienie zostalo zrealizowane, a kazdy ze zrzutkowcow jestesmy winni " << dlug << endl << endl;
+}
+
+void Kasa::WypiszDlugi()
+{
+	for (auto id = this->listaDlugow.begin(); id != this->listaDlugow.end(); id++)
+	{
+		cout << "Uzytkownikowi o id " << id->first << " jestesmy winni " << id->second << endl;
+	}
+}
+

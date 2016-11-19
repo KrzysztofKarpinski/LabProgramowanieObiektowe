@@ -4,14 +4,7 @@ int Stazysta::idBiezace = 100;			//Te dwie zmienne s¹ takie same dla KLASY - nie
 int Stazysta::idMaksymalne = 199;
 
 Stazysta::Stazysta(string b, string c, float d) : Czlowiek()
-{
-	while (idBiezace <= id) 
-	{ 
-		idBiezace = id + 1 ; 
-	}
-
-	cout << idBiezace << endl;
-	
+{	
 	id = Stazysta::idBiezace++;
 	imie = b;
 	nazwisko = c;
@@ -25,6 +18,11 @@ Stazysta::Stazysta(int a, string b, string c, float d) : Czlowiek()
 	imie = b;
 	nazwisko = c;
 	saldo = d;
+
+	if(Stazysta::idBiezace <= id)
+	{
+		Stazysta::idBiezace = id + 1;
+	}
 }
 
 int Stazysta::getId()

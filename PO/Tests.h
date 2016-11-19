@@ -18,3 +18,4 @@ void SkarbonkaTest();
 void PosilekTest();
 void KasaTest();
 void StazysciPracownicyTworzenieTest();
+void MapyTest(Kasa& kasa);

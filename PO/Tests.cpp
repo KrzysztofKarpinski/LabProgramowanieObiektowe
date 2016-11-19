@@ -67,11 +67,17 @@ void KasaTest()
 void StazysciPracownicyTworzenieTest()
 {
 	cout << "Przyklad: " << endl;
-	Pracownik P1(1, "Janek", "Maci", 7889.3);
-	Pracownik P2(2, "Maciej", "Miszt", 890.7);
-	Pracownik P3(3, "Kuba", "Kras", 687.3);
+	Pracownik P1(0, "Janek", "Maci", 7889.3);
+	Pracownik P2(1, "Maciej", "Miszt", 890.7);
+	Pracownik P3(2, "Kuba", "Kras", 687.3);
 	Stazysta S1("Lucjan", "Mars", 7876.6);
 	Stazysta S2("Alan", "Walker", 67868.4);
 	Stazysta S3("Darek", "Just", 67687.2);
 }
 
+void MapyTest(Kasa& kasa)
+{
+	kasa.ZamowGrupowo();
+	kasa.ZamowGrupowo();
+	kasa.WypiszDlugi();
+}

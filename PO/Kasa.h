@@ -5,6 +5,7 @@
 #include"Pracownik.h"
 #include"Stazysta.h"
 #include<string>
+#include <map>
 
 using namespace std;
 
@@ -13,6 +14,7 @@ class Kasa
 public:
 	vector<Stazysta> Lista_Stazystow;
 	vector<Pracownik> Lista_Pracownikow;
+	map<int, double> listaDlugow;
 
 	Kasa();
 	
@@ -49,4 +51,8 @@ public:
 	void ZmianaSalda();
 
 	void ZaplacZaObiad();
+
+	void ZamowGrupowo();
+
+	void WypiszDlugi();
 };
