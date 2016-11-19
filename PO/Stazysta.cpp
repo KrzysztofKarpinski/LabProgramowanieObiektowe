@@ -5,11 +5,13 @@ int Stazysta::idMaksymalne = 199;
 
 Stazysta::Stazysta(string b, string c, float d) : Czlowiek()
 {
-	if (Stazysta::idBiezace <= idBiezace) 
+	while (idBiezace <= id) 
 	{ 
-		Stazysta::idBiezace = idBiezace + 1 ; 
+		idBiezace = id + 1 ; 
 	}
 
+	cout << idBiezace << endl;
+	
 	id = Stazysta::idBiezace++;
 	imie = b;
 	nazwisko = c;

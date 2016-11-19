@@ -49,13 +49,13 @@ bool Kasa::JestNaLiscie(Pracownik kontoWejsciowePracownika)
 
 void Kasa::DodajKontoStazysty(Stazysta stazysta)
 {
-	if (!this->JestNaLiscie(stazysta))		//jezeli konta nie ma na liœcie to
+	if (!this->JestNaLiscie(stazysta))		
 	{
-		Lista_Stazystow.push_back(stazysta);//dodaj pracownika
+		Lista_Stazystow.push_back(stazysta);
 	}
-	else											//je¿eli jest to
+	else											
 	{
-		cout << "To Id jest juz zajete" << endl;	//Wyœwietl informacjê, ¿e u¿ytkownik ju¿ jest w systemie
+		cout << "To Id jest juz zajete" << endl;
 	}
 }
 

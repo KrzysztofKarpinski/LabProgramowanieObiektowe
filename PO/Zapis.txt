@@ -1,16 +1,4 @@
 0
 Krzysztof
 Karpinski
-654765.000000
-1
-Katarzyna
-Karpinska
-67586.000000
-2
-Weronika
-Karpinska
-7453.000000
-3
-Agnieszka
-Karpinska
-7433.000000
+25457.000000

@@ -36,8 +36,6 @@ public:
 
 	void PokazLaczneSaldo();
 
-	//friend float Czlowiek::getSaldo();
-
 	void UsunKontoStazysty(int Id);
 
 	void UsunKontoPracownika(int Id);

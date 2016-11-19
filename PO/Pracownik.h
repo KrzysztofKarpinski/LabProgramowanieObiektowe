@@ -12,11 +12,15 @@ public:
 	string nazwisko;
 	float saldo;
 
+	
+
 	Pracownik(string b, string c, float d);
 
 	Pracownik(int a, string b, string c, float d);
 
 	int getId();
+
+	int setId(int newId);
 
 	string getImie();
 

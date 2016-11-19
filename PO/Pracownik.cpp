@@ -5,7 +5,7 @@ int Pracownik::idMaksymalne = 99;
 
 Pracownik::Pracownik(string b, string c, float d) : Czlowiek()
 {
-	id = Pracownik::idBiezace++;
+	id = idBiezace++;
 	imie = b;
 	nazwisko = c;
 	saldo = d;
@@ -22,6 +22,12 @@ Pracownik::Pracownik(int a, string b, string c, float d) : Czlowiek()
 int Pracownik::getId()
 {
 	return id;
+}
+
+int Pracownik::setId(int newId)
+{
+	idBiezace = newId;
+	return idBiezace;
 }
 
 string Pracownik::getImie()
