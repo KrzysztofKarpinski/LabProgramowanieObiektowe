@@ -31,7 +31,7 @@ int main()
 	{
 		
 
-		cout << "	Menu	" << endl << "1. Dodaj konto pracownika" << endl << "2. Dodaj konto stazysty" << endl << "3. Usun konto pracownika" << endl << "4. Usun konto stazysty" << endl << "5. Edytuj saldo konta" << endl << "6. Wykonaj przelew" << endl << "7. Wyswietl stan kasy" << endl << "8. Wyswietl konta" << endl << "9. Wyjscie" << endl;
+		cout << "	Menu	" << endl << "1. Dodaj konto pracownika" << endl << "2. Dodaj konto stazysty" << endl << "3. Usun konto pracownika" << endl << "4. Usun konto stazysty" << endl << "5. Edytuj saldo konta" << endl << "6. Wykonaj przelew" << endl << "7. Wyswietl stan kasy" << endl << "8. Wyswietl konta" << endl << "9. Zaplac za obiad" << endl <<"10. Wyjscie" << endl;
 		cin >> menu;
 		if (menu == 1)
 		{
@@ -73,6 +73,7 @@ int main()
 
 		if (menu == 3)
 		{
+			cout << "Jaki numer konta usunac? (Id pracownika od 0 do 99)" << endl;
 			int n;
 			cin >> n;
 			kasa.UsunKontoPracownika(n);
@@ -81,6 +82,7 @@ int main()
 
 		if (menu == 4)
 		{
+			cout << "Jaki numer konta usunac? (Id stazysty od 100 do 199)" << endl;
 			int n;
 			cin >> n;
 			kasa.UsunKontoStazysty(n);
@@ -111,7 +113,12 @@ int main()
 			kasa.PokazKontaStazystow();
 		}
 		
+
 		if (menu == 9)
+		{
+			kasa.ZaplacZaObiad();
+		}
+		if (menu == 10)
 		{
 			return (doexit = false);
 		}

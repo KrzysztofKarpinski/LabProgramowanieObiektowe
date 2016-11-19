@@ -25,6 +25,8 @@ public:
 
 	float getSaldo();
 
+	float setSaldo(float saldo1);
+
 	float SaldoPoWplacieNaObiad();
 
 	void przywitanie();

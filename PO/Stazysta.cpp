@@ -5,6 +5,11 @@ int Stazysta::idMaksymalne = 199;
 
 Stazysta::Stazysta(string b, string c, float d) : Czlowiek()
 {
+	if (Stazysta::idBiezace <= idBiezace) 
+	{ 
+		Stazysta::idBiezace = idBiezace + 1 ; 
+	}
+
 	id = Stazysta::idBiezace++;
 	imie = b;
 	nazwisko = c;
@@ -37,6 +42,12 @@ string Stazysta::getNazwisko()
 
 float Stazysta::getSaldo()
 {
+	return saldo;
+}
+
+float Stazysta::setSaldo(float saldo1)
+{
+	saldo = saldo1;
 	return saldo;
 }
 

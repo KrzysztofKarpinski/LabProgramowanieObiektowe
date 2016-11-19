@@ -30,7 +30,7 @@ void Kasa::DodajKontoPracownika(Pracownik pracownik)
 	}
 	else											//je¿eli jest to
 	{
-		cout << "To Id jest ju¿ zajête" << endl;	//Wyœwietl informacjê, ¿e u¿ytkownik ju¿ jest w systemie
+		cout << "To Id jest juz zajete" << endl;	//Wyœwietl informacjê, ¿e u¿ytkownik ju¿ jest w systemie
 	}
 }
 
@@ -55,7 +55,7 @@ void Kasa::DodajKontoStazysty(Stazysta stazysta)
 	}
 	else											//je¿eli jest to
 	{
-		cout << "To Id jest ju¿ zajête" << endl;	//Wyœwietl informacjê, ¿e u¿ytkownik ju¿ jest w systemie
+		cout << "To Id jest juz zajete" << endl;	//Wyœwietl informacjê, ¿e u¿ytkownik ju¿ jest w systemie
 	}
 }
 
@@ -103,7 +103,7 @@ void Kasa::WczytajKontaStazystow()
 					);
 				if (stazysta->getId() < 200 && stazysta->getId() >= 100)
 				{
-					cout << "Stazysta" << endl;
+					//cout << "Stazysta" << endl;
 					Lista_Stazystow.push_back(*stazysta);
 				}
 			}
@@ -145,7 +145,7 @@ void Kasa::WczytajKontaPracownikow()
 				);
 				if (pracownik->getId() <100)
 				{
-					cout << "Pracownik" << endl;
+					//cout << "Pracownik" << endl;
 					Lista_Pracownikow.push_back(*pracownik);
 				}
 				
@@ -203,10 +203,18 @@ void Kasa::UsunKontoPracownika(int Id)
 {
 	for (vector<Pracownik>::iterator pracownik = this->Lista_Pracownikow.begin(); pracownik != this->Lista_Pracownikow.end(); pracownik++)
 	{
-		if (pracownik->getId() == Id)
+		if (pracownik->getId() == Id && pracownik->getSaldo() == 0)
 		{
 			Lista_Pracownikow.erase(pracownik);
 			break;
+		}
+		if (pracownik->getId() == Id && pracownik->getSaldo() != 0)
+		{
+			cout << "Nie udalo sie usunac z powodu niezerowego stanu konta." << endl;
+		}
+		if (pracownik->getId() != Id && pracownik->getSaldo() == 0)
+		{
+			cout << "Nie ma takiego Id" << endl;
 		}
 	}
 }
@@ -215,10 +223,18 @@ void Kasa::UsunKontoStazysty(int Id)
 {
 	for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
 	{
-		if (stazysta->getId() == Id)
+		if (stazysta->getId() == Id && stazysta->getSaldo() == 0)
 		{
 			Lista_Stazystow.erase(stazysta);
 			break;
+		}
+		if (stazysta->getId() == Id && stazysta->getSaldo() != 0)
+		{
+			cout << "Nie udalo sie usunac z powodu niezerowego stanu konta." << endl;
+		}
+		if (stazysta->getId() != Id && stazysta->getSaldo() == 0)
+		{
+			cout << "Nie ma takiego Id" << endl;
 		}
 	}
 }
@@ -314,5 +330,44 @@ void Kasa::ZmianaSalda()
 		{
 			pracownik->setSaldo(saldo);
 		}
+	}
+
+	for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
+	{
+		if (stazysta->getImie() == imie && stazysta->getNazwisko() == nazwisko)
+		{
+			stazysta->setSaldo(saldo);
+		}
+	}
+
+
+}
+
+void  Kasa::ZaplacZaObiad()
+{
+	Posilek posilek;
+
+	Skarbonka skarbonka;
+	
+	int i = 0;
+
+	for (vector<Pracownik>::iterator pracownik = this->Lista_Pracownikow.begin(); pracownik != this->Lista_Pracownikow.end(); pracownik++)
+	{
+		
+		cout << "Pracownik numer " << i << ", ktory posilek?" << endl;
+		float saldoP = pracownik->getSaldo();
+		saldoP -= posilek.getCena();
+		pracownik->setSaldo(saldoP);
+		i++;
+	}
+
+	i = 0;
+	for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
+	{
+		cout << "Stazysta numer " << i << ", ktory posilek?" << endl;
+		float saldoS = stazysta->getSaldo();
+		saldoS -= posilek.getCena();
+		stazysta->setSaldo(saldoS);
+		i++;
 	}
 }

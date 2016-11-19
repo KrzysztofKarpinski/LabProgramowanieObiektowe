@@ -49,4 +49,6 @@ public:
 	void Przelew();
 
 	void ZmianaSalda();
+
+	void ZaplacZaObiad();
 };
