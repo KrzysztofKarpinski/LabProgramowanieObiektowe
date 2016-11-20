@@ -55,4 +55,6 @@ public:
 	void ZamowGrupowo();
 
 	void WypiszDlugi();
+
+	bool IstniejeId(int id);
 };

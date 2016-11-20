@@ -15,8 +15,7 @@ int main()
 {	
 	Kasa kasa;
 	
-	MapyTest(kasa);
-
+	
 	//StazysciPracownicyTworzenieTest();
 	//kasa.ZapiszStazystow();
 	//kasa.WczytajKonta();
@@ -30,11 +29,14 @@ int main()
 	kasa.WczytajKontaStazystow();
 	kasa.WczytajKontaPracownikow();
 
+
 	while (doexit == true)
 	{
 		
 
-		cout << "	Menu	" << endl << "1. Dodaj konto pracownika" << endl << "2. Dodaj konto stazysty" << endl << "3. Usun konto pracownika" << endl << "4. Usun konto stazysty" << endl << "5. Edytuj saldo konta" << endl << "6. Wykonaj przelew" << endl << "7. Wyswietl stan kasy" << endl << "8. Wyswietl konta" << endl << "9. Zaplac za obiad" << endl <<"10. Wyjscie" << endl;
+		cout << "	Menu	" << endl << "1. Dodaj konto pracownika" << endl << "2. Dodaj konto stazysty" << endl << "3. Usun konto pracownika" 
+			<< endl << "4. Usun konto stazysty" << endl << "5. Edytuj saldo konta" << endl << "6. Wykonaj przelew" << endl 
+			<< "7. Wyswietl stan kasy" << endl << "8. Wyswietl konta" << endl << "9. Zamow grupowo obiad" << endl <<"10. Wyjscie" << endl;
 		cin >> menu;
 		if (menu == 1)
 		{
@@ -119,14 +121,13 @@ int main()
 
 		if (menu == 9)
 		{
-			kasa.ZaplacZaObiad();
+			kasa.ZamowGrupowo();
+			kasa.WypiszDlugi();
 		}
 		if (menu == 10)
 		{
 			return (doexit = false);
 		}
 	}
-	cin.ignore();			//Zatrzymuje dzia³anie programu - u¿ytkownik mo¿e wpisaæ cokolwiek
-	system("pause");
-	return 0;
+	cin.ignore();
 }

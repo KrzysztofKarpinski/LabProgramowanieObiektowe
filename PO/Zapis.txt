@@ -5,7 +5,7 @@ Maci
 1
 Maciej
 Miszt
-890.700012
+440.700012
 2
 Kuba
 Kras
@@ -14,3 +14,11 @@ Kras
 Osoba
 Nazwisko
 10.000000
+4
+Adam
+Nawalka
+3915.000000
+5
+Ala
+Mali
+543.000000

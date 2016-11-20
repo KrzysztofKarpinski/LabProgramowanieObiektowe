@@ -70,5 +70,8 @@
     <Text Include="Zapis1.txt">
       <Filter>Resource Files</Filter>
     </Text>
+    <Text Include="Dlugi.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

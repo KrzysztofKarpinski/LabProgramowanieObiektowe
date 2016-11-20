@@ -130,6 +130,7 @@
     <ClInclude Include="Tests.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="Dlugi.txt" />
     <Text Include="Zapis.txt" />
     <Text Include="Zapis1.txt" />
   </ItemGroup>

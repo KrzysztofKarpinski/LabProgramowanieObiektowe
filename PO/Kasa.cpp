@@ -74,6 +74,21 @@ bool Kasa::JestNaLiscie(Stazysta kontoWejscioweStazysty)
 	return false;
 }
 
+bool Kasa::IstniejeId(int id)
+{
+	for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
+	{
+		for (vector<Pracownik>::iterator pracownik = this->Lista_Pracownikow.begin(); pracownik != this->Lista_Pracownikow.end(); pracownik++)
+		{
+			if (stazysta->getId() == id || (pracownik->getId() == id))
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 
 void Kasa::WczytajKontaStazystow()
 {
@@ -398,16 +413,23 @@ void Kasa::ZamowGrupowo()
 	cout << endl << endl << "Podaj identyfikatory kupujacych lub 'x', jesli skonczyles je wprowadzac." 
 		<< endl << "**************************" << endl;
 	cin >> identyfikator;
-
-	double dlug = zaplacono / rachunek;
+	
 	vector<int> zrzutkowcy;
-
+	
 	while (identyfikator != "x")
 	{
 		try
 		{
-			zrzutkowcy.push_back(stoi(identyfikator));
-			cin >> identyfikator;
+			if (IstniejeId(stoi(identyfikator)))
+			{
+				zrzutkowcy.push_back(stoi(identyfikator));
+				cin >> identyfikator;
+			}
+			else
+			{
+				cout << "Nie ma takiej osoby w firmie" << endl;
+				cin >> identyfikator;
+			}
 		}
 		catch (string exception)
 		{
@@ -416,6 +438,10 @@ void Kasa::ZamowGrupowo()
 	}
 
 	cout << "**************************" << endl;
+	
+	cout << zaplacono << endl<< rachunek << endl << zrzutkowcy.size() << endl;
+	
+	double dlug = (zaplacono / rachunek) / zrzutkowcy.size();
 
 	for (auto id = zrzutkowcy.begin(); id != zrzutkowcy.end(); id++)
 	{
@@ -434,9 +460,11 @@ void Kasa::ZamowGrupowo()
 
 void Kasa::WypiszDlugi()
 {
+	fstream plik;
+	plik.open("Dlugi.txt", ios::app | ios::in | ios::out);
 	for (auto id = this->listaDlugow.begin(); id != this->listaDlugow.end(); id++)
 	{
 		cout << "Uzytkownikowi o id " << id->first << " jestesmy winni " << id->second << endl;
+		plik << id->first << endl << id->second<< endl;
 	}
 }
-
