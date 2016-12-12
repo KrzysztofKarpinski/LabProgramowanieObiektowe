@@ -14,6 +14,7 @@ class Kasa
 public:
 	vector<Stazysta> Lista_Stazystow;
 	vector<Pracownik> Lista_Pracownikow;
+	vector<Czlowiek> Lista_Ludzi;
 	map<int, double> listaDlugow;
 
 	Kasa();
@@ -38,9 +39,11 @@ public:
 
 	void PokazLaczneSaldo();
 
-	void UsunKontoStazysty(int Id);
+	void UsunKontoStazysty(string imie, string nazwisko);
 
-	void UsunKontoPracownika(int Id);
+	void UsunKontoPracownika(string imie, string nazwisko);
+
+	void UsunKonto(string imie, string nazwisko);
 
 	void ZapiszStazystow();
 
@@ -50,11 +53,11 @@ public:
 
 	void ZmianaSalda();
 
-	void ZaplacZaObiad();
-
 	void ZamowGrupowo();
 
 	void WypiszDlugi();
 
-	bool IstniejeId(int id);
+	bool Istnieje(string imie, string nazwisko);
+
+	string Nazwa(string a, string b);
 };

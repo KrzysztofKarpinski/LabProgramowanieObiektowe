@@ -2,14 +2,14 @@
 #include<string>
 #include<vector>
 
-#include"Posilek.h"
-#include"Skarbonka.h"
 #include"Pracownik.h"
 #include"Stazysta.h"
 #include"Kasa.h"
 #include"Tests.h"
 
 using namespace std;
+
+void ClrScr();
 
 int main()
 {	
@@ -28,8 +28,7 @@ int main()
 	
 	kasa.WczytajKontaStazystow();
 	kasa.WczytajKontaPracownikow();
-
-
+	
 	while (doexit == true)
 	{
 		
@@ -78,19 +77,21 @@ int main()
 
 		if (menu == 3)
 		{
-			cout << "Jaki numer konta usunac? (Id pracownika od 0 do 99)" << endl;
-			int n;
-			cin >> n;
-			kasa.UsunKontoPracownika(n);
+			cout << "Kogo usunac? (imie i nazwisko)" << endl;
+			string imie, nazwisko;
+			cin >> imie;
+			cin >> nazwisko;
+			kasa.UsunKontoPracownika(imie, nazwisko);
 			kasa.ZapiszPracownikow();
 		}
 
 		if (menu == 4)
 		{
-			cout << "Jaki numer konta usunac? (Id stazysty od 100 do 199)" << endl;
-			int n;
-			cin >> n;
-			kasa.UsunKontoStazysty(n);
+			cout << "Kogo usunac? (imie i nazwisko)" << endl;
+			string imie, nazwisko;
+			cin >> imie;
+			cin >> nazwisko;
+			kasa.UsunKontoStazysty(imie, nazwisko);
 			kasa.ZapiszStazystow();
 		}
 
@@ -99,6 +100,7 @@ int main()
 
 			kasa.ZmianaSalda();
 			kasa.ZapiszPracownikow();
+			kasa.ZapiszStazystow();
 		}
 
 		

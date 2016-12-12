@@ -3,41 +3,14 @@
 
 class Pracownik : public Czlowiek
 {
-private:
-	static int idBiezace;
-	static int idMaksymalne;
 public:
-	int id;
-	string imie;
-	string nazwisko;
-	float saldo;
-
-	
 
 	Pracownik(string b, string c, float d);
-
-	Pracownik(int a, string b, string c, float d);
-
-	int getId();
-
-	int setId(int newId);
-
-	string getImie();
-
-	string getNazwisko();
-
-	float getSaldo();
-
-	float setSaldo(float saldo1);
 
 	float Pozycz();
 
 	float Oddaj();
 
-	float SaldoPoWplacieNaObiad();
-
-	void przywitanie();
-
-	string toString();
+	void foo() {}
 };
 

@@ -11,7 +11,8 @@ using namespace std;
 
 vector<Stazysta> Lista_Stazystow;
 vector<Pracownik> Lista_Pracownikow;							//http://geosoft.no/development/cppstyle.html
-map<Czlowiek, double> ListaDlugow;
+vector<Czlowiek> Lista_Ludzi;
+map<string, double> ListaDlugow;
 
 
 Kasa::Kasa()
@@ -30,10 +31,11 @@ void Kasa::DodajKontoPracownika(Pracownik pracownik)
 	if (!this->JestNaLiscie(pracownik))		//jezeli konta nie ma na liœcie to
 	{
 		Lista_Pracownikow.push_back(pracownik);//dodaj pracownika
+		Lista_Ludzi.push_back(pracownik);
 	}
 	else											//je¿eli jest to
 	{
-		cout << "To Id jest juz zajete" << endl;	//Wyœwietl informacjê, ¿e u¿ytkownik ju¿ jest w systemie
+		cout << "Ten pracownik juz istnieje" << endl;	//Wyœwietl informacjê, ¿e u¿ytkownik ju¿ jest w systemie
 	}
 }
 
@@ -41,7 +43,7 @@ bool Kasa::JestNaLiscie(Pracownik kontoWejsciowePracownika)
 {
 	for (vector<Pracownik>::iterator pracownik = this->Lista_Pracownikow.begin(); pracownik != this->Lista_Pracownikow.end(); pracownik++)
 	{
-		if (pracownik->getId() == kontoWejsciowePracownika.getId())
+		if (pracownik->getImie() == kontoWejsciowePracownika.getImie() && pracownik->getNazwisko() == kontoWejsciowePracownika.getNazwisko())
 		{
 			return true;
 		}
@@ -49,16 +51,16 @@ bool Kasa::JestNaLiscie(Pracownik kontoWejsciowePracownika)
 	return false;
 }
 
-
 void Kasa::DodajKontoStazysty(Stazysta stazysta)
 {
 	if (!this->JestNaLiscie(stazysta))		
 	{
 		Lista_Stazystow.push_back(stazysta);
+		Lista_Ludzi.push_back(stazysta);
 	}
 	else											
 	{
-		cout << "To Id jest juz zajete" << endl;
+		cout << "Ten stazysta juz istnieje" << endl;
 	}
 }
 
@@ -66,7 +68,7 @@ bool Kasa::JestNaLiscie(Stazysta kontoWejscioweStazysty)
 {
 	for (vector<Stazysta>::iterator stazysta= this->Lista_Stazystow.begin(); stazysta!= this->Lista_Stazystow.end(); stazysta++)
 	{
-		if (stazysta->getId() == kontoWejscioweStazysty.getId())
+		if (stazysta->getImie() == kontoWejscioweStazysty.getImie() && stazysta->getNazwisko() == kontoWejscioweStazysty.getNazwisko())
 		{
 			return true;
 		}
@@ -74,34 +76,29 @@ bool Kasa::JestNaLiscie(Stazysta kontoWejscioweStazysty)
 	return false;
 }
 
-bool Kasa::IstniejeId(int id)
+bool Kasa::Istnieje(string imie, string nazwisko)
 {
-	for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
+	for (vector<Czlowiek>::iterator czlowiek = this->Lista_Ludzi.begin(); czlowiek != this->Lista_Ludzi.end(); czlowiek++)
 	{
-		for (vector<Pracownik>::iterator pracownik = this->Lista_Pracownikow.begin(); pracownik != this->Lista_Pracownikow.end(); pracownik++)
+		if ((czlowiek->getImie() == imie) && (czlowiek->getNazwisko() == nazwisko))
 		{
-			if (stazysta->getId() == id || (pracownik->getId() == id))
-			{
-				return true;
-			}
+			return true;
 		}
 	}
 	return false;
 }
 
-
 void Kasa::WczytajKontaStazystow()
 {
-	//cout << "Wczytywanie: " << endl;
 	fstream plik;
-	plik.open("Zapis1.txt", ios::in | ios::out);
+	plik.open("Stazysci.txt", ios::in | ios::out);
 	if (plik.good())
 	{
 		bool flag = true;
-		string linie[4];								//Zamiast tworzyæ cztery ró¿ne zmienne mo¿na zapisaæ wszsystkie cztery informacje o u¿ytkowniku w jednej tablicy
+		string linie[3];								//Zamiast tworzyæ cztery ró¿ne zmienne mo¿na zapisaæ wszsystkie cztery informacje o u¿ytkowniku w jednej tablicy
 		while (!plik.eof())
 		{
-			for (int i = 0; i < 4; i++)					//Wczytaj dane jednego u¿ytkownika
+			for (int i = 0; i < 3; i++)					//Wczytaj dane jednego u¿ytkownika
 			{
 				if (plik.eof())							//sprawdzamy to za ka¿dym razem, gdy¿ u¿ytkownicy s¹ zapisywani ze znakiem nowej liniii na koñcu - daj breakpoint na for i uruchom debugger, przeklikaj do konca pliku
 				{
@@ -114,16 +111,12 @@ void Kasa::WczytajKontaStazystow()
 			if(flag)
 			{
 				Stazysta *stazysta = new Stazysta(
-					stoi(linie[0]),						//stoi = string to int
+					linie[0],
 					linie[1],
-					linie[2],
-					stof(linie[3])						//stof = string to float
+					stof(linie[2])						//stof = string to float
 					);
-				if (stazysta->getId() < 200 && stazysta->getId() >= 100)
-				{
-					//cout << "Stazysta" << endl;
-					Lista_Stazystow.push_back(*stazysta);
-				}
+				Lista_Stazystow.push_back(*stazysta);
+				Lista_Ludzi.push_back(*stazysta);
 			}
 		}
 		plik.close();
@@ -136,14 +129,14 @@ void Kasa::WczytajKontaPracownikow()
 {
 	//cout << "Wczytywanie: " << endl;
 	fstream plik;
-	plik.open("Zapis.txt", ios::in | ios::out);
+	plik.open("Pracownicy.txt", ios::in | ios::out);
 	if (plik.good())
 	{
 		bool flag = true;
-		string linie[4];								//Zamiast tworzyæ cztery ró¿ne zmienne mo¿na zapisaæ wszsystkie cztery informacje o u¿ytkowniku w jednej tablicy
+		string linie[3];								//Zamiast tworzyæ cztery ró¿ne zmienne mo¿na zapisaæ wszsystkie cztery informacje o u¿ytkowniku w jednej tablicy
 		while (!plik.eof())
 		{
-			for (int i = 0; i < 4; i++)					//Wczytaj dane jednego u¿ytkownika
+			for (int i = 0; i < 3; i++)					//Wczytaj dane jednego u¿ytkownika
 			{
 				if (plik.eof())							//sprawdzamy to za ka¿dym razem, gdy¿ u¿ytkownicy s¹ zapisywani ze znakiem nowej liniii na koñcu - daj breakpoint na for i uruchom debugger, przeklikaj do konca pliku
 				{
@@ -156,17 +149,12 @@ void Kasa::WczytajKontaPracownikow()
 			if (flag)
 			{
 				Pracownik *pracownik = new Pracownik(
-					stoi(linie[0]),						//stoi = string to int
+					linie[0],
 					linie[1],
-					linie[2],
-					stof(linie[3])						//stof = string to float
+					stof(linie[2])						//stof = string to float
 				);
-				if (pracownik->getId() <100)
-				{
-					//cout << "Pracownik" << endl;
-					Lista_Pracownikow.push_back(*pracownik);
-				}
-				
+				Lista_Pracownikow.push_back(*pracownik);
+				Lista_Ludzi.push_back(*pracownik);
 			}
 		}
 		plik.close();
@@ -180,11 +168,7 @@ void Kasa::PokazKontaStazystow()
 	int i = 0;
 	for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
 	{
-		if (100 < stazysta->getId() < 200)
-		{
-			cout << "Stazysta numer " << i++ << ":" << endl;
-			cout << stazysta->toString() << endl;
-		}
+		cout << stazysta->toString() << endl;
 	}
 }
 
@@ -193,75 +177,90 @@ void Kasa::PokazKontaPracownikow()
 	int i = 0;
 	for (vector<Pracownik>::iterator pracownik = this->Lista_Pracownikow.begin(); pracownik != this->Lista_Pracownikow.end(); pracownik++)
 	{
-		if (pracownik->getId() < 100)
-		{
-			cout << "Pracownik numer " << i++ << ":" << endl;
 			cout << pracownik->toString() << endl;
-		}
 	}
 }
 
 void Kasa::PokazLaczneSaldo()
 {
-	float suma1=0;
-	float suma2 = 0;
-	for (vector<Pracownik>::iterator pracownik = this->Lista_Pracownikow.begin(); pracownik != this->Lista_Pracownikow.end(); pracownik++)
+	float suma=0;
+	for (vector<Czlowiek>::iterator czlowiek = this->Lista_Ludzi.begin(); czlowiek != this->Lista_Ludzi.end(); czlowiek++)
 	{
-		suma1 += pracownik->getSaldo();
+		suma += czlowiek->getSaldo();
 	}
-	for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
-	{
-		suma2 += stazysta->getSaldo();
-	}
-	float suma = suma1 + suma2;
 	cout << suma << endl;
 }
 
-void Kasa::UsunKontoPracownika(int Id)
+void Kasa::UsunKontoPracownika(string imie, string nazwisko)
 {
 	for (vector<Pracownik>::iterator pracownik = this->Lista_Pracownikow.begin(); pracownik != this->Lista_Pracownikow.end(); pracownik++)
 	{
-		if (pracownik->getId() == Id && pracownik->getSaldo() == 0)
+		if (pracownik->getImie() == imie && pracownik->getNazwisko()==nazwisko && pracownik->getSaldo() == 0)
 		{
 			Lista_Pracownikow.erase(pracownik);
 			break;
 		}
-		if (pracownik->getId() == Id && pracownik->getSaldo() != 0)
+
+		if (pracownik->getImie() == imie&& pracownik ->getNazwisko() == nazwisko && pracownik->getSaldo() != 0)
 		{
 			cout << "Nie udalo sie usunac z powodu niezerowego stanu konta." << endl;
 		}
-		if (pracownik->getId() != Id && pracownik->getSaldo() == 0)
+
+		if ((pracownik->getImie() != imie || pracownik->getNazwisko()== nazwisko) && pracownik->getSaldo() == 0)
 		{
-			cout << "Nie ma takiego Id" << endl;
+			cout << "Nie ma takiego pracownika" << endl;
 		}
 	}
 }
 
-void Kasa::UsunKontoStazysty(int Id)
+void Kasa::UsunKontoStazysty(string imie, string nazwisko)
 {
 	for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
 	{
-		if (stazysta->getId() == Id && stazysta->getSaldo() == 0)
+		if (stazysta->getImie() == imie&& stazysta->getNazwisko()== nazwisko && stazysta->getSaldo() == 0)
 		{
 			Lista_Stazystow.erase(stazysta);
 			break;
 		}
-		if (stazysta->getId() == Id && stazysta->getSaldo() != 0)
+
+		if (stazysta->getImie() == imie && stazysta->getNazwisko()==nazwisko && stazysta->getSaldo() != 0)
 		{
 			cout << "Nie udalo sie usunac z powodu niezerowego stanu konta." << endl;
 		}
-		if (stazysta->getId() != Id && stazysta->getSaldo() == 0)
+
+		if (stazysta->getImie() != imie&& stazysta->getNazwisko() == nazwisko && stazysta->getSaldo() == 0)
 		{
-			cout << "Nie ma takiego Id" << endl;
+			cout << "Nie ma takiego stazysty" << endl;
+		}
+	}
+}
+void Kasa::UsunKonto(string imie, string nazwisko)
+{
+	for (vector<Czlowiek>::iterator czlowiek = this->Lista_Ludzi.begin(); czlowiek != this->Lista_Ludzi.end(); czlowiek++)
+	{
+		if (czlowiek->getImie() == imie && czlowiek->getNazwisko() == nazwisko && czlowiek->getSaldo() == 0)
+		{
+			Lista_Ludzi.erase(czlowiek);
+			break;
+		}
+
+		if (czlowiek->getImie() == imie && czlowiek->getNazwisko() == nazwisko && czlowiek->getSaldo() != 0)
+		{
+			cout << "Nie udalo sie usunac z powodu niezerowego stanu konta." << endl;
+		}
+
+		if (czlowiek->getImie() != imie&& czlowiek->getNazwisko() == nazwisko && czlowiek->getSaldo() == 0)
+		{
+			cout << "Nie ma takiego stazysty" << endl;
 		}
 	}
 }
 
 void Kasa::ZapiszStazystow()
 {
-	ofstream os("Zapis1.txt");										//ten dosyæ brzydki zabieg czyœci ca³¹ zawartoœæ pliku
+	ofstream os("Stazysci.txt");										//ten dosyæ brzydki zabieg czyœci ca³¹ zawartoœæ pliku
 	fstream plik;
-	plik.open("Zapis1.txt", ios::app | ios::in | ios::out);			
+	plik.open("Stazysci.txt", ios::app | ios::in | ios::out);			
 	if (plik.good() == true)										
 	{
 		//cout << "Uzyskano dostep do pliku!" << endl;
@@ -277,9 +276,9 @@ void Kasa::ZapiszStazystow()
 
 void Kasa::ZapiszPracownikow()
 {
-	ofstream os("Zapis.txt");										//ten dosyæ brzydki zabieg czyœci ca³¹ zawartoœæ pliku
+	ofstream os("Pracownicy.txt");										//ten dosyæ brzydki zabieg czyœci ca³¹ zawartoœæ pliku
 	fstream plik;
-	plik.open("Zapis.txt", ios::app | ios::in | ios::out);
+	plik.open("Pracownicy.txt", ios::app | ios::in | ios::out);
 	if (plik.good() == true)
 	{
 		//cout << "Uzyskano dostep do pliku!" << endl;
@@ -298,11 +297,11 @@ void Kasa::Przelew()
 	string imie1, imie2, nazwisko1, nazwisko2;
 	float saldo1, saldo2;
 
-	cout << "Od kogo ?" << endl;
+	cout << "Od kogo ? (imie i nazwisko)" << endl;
 	cin >> imie1;
 	cin >> nazwisko1;
 
-	cout << "Dla kogo?" << endl;
+	cout << "Dla kogo? (imie i nazwisko)" << endl;
 	cin >> imie2;
 	cin >> nazwisko2;
 
@@ -325,9 +324,9 @@ void Kasa::Przelew()
 				pracownik1->setSaldo(saldo1);
 				pracownik2->setSaldo(saldo2);
 			}
-		}
-		
+		}	
 	}
+
 }
 
 void Kasa::ZmianaSalda()
@@ -335,7 +334,7 @@ void Kasa::ZmianaSalda()
 	string imie, nazwisko;
 	float saldo;
 
-	cout << "Komu zmienic saldo konta ?" << endl;
+	cout << "Komu zmienic saldo konta ? (imie i nazwisko)" << endl;
 	cin >> imie;
 	cin >> nazwisko;
 
@@ -358,43 +357,22 @@ void Kasa::ZmianaSalda()
 		}
 	}
 
-
-}
-
-void  Kasa::ZaplacZaObiad()
-{
-	Posilek posilek;
-
-	Skarbonka skarbonka;
-	
-	int i = 0;
-
-	for (vector<Pracownik>::iterator pracownik = this->Lista_Pracownikow.begin(); pracownik != this->Lista_Pracownikow.end(); pracownik++)
+	for (vector<Czlowiek>::iterator czlowiek = this->Lista_Ludzi.begin(); czlowiek != this->Lista_Ludzi.end(); czlowiek++)
 	{
-		
-		cout << "Pracownik numer " << i << ", ktory posilek?" << endl;
-		float saldoP = pracownik->getSaldo();
-		saldoP -= posilek.getCena();
-		pracownik->setSaldo(saldoP);
-		i++;
+		if (czlowiek->getImie() == imie && czlowiek->getNazwisko() == nazwisko)
+		{
+			czlowiek->setSaldo(saldo);
+		}
 	}
 
-	i = 0;
-	for (vector<Stazysta>::iterator stazysta = this->Lista_Stazystow.begin(); stazysta != this->Lista_Stazystow.end(); stazysta++)
-	{
-		cout << "Stazysta numer " << i << ", ktory posilek?" << endl;
-		float saldoS = stazysta->getSaldo();
-		saldoS -= posilek.getCena();
-		stazysta->setSaldo(saldoS);
-		i++;
-	}
+
 }
 
 void Kasa::ZamowGrupowo()
 {
 	double zaplacono;
 	double rachunek;
-	string identyfikator;
+	string imie, nazwisko, identyfikator;
 
 	try
 	{
@@ -410,52 +388,59 @@ void Kasa::ZamowGrupowo()
 		cout << "Program wyjdzie z funkcji" << endl;
 		return;
 	}
-	cout << endl << endl << "Podaj identyfikatory kupujacych lub 'x', jesli skonczyles je wprowadzac." 
-		<< endl << "**************************" << endl;
-	cin >> identyfikator;
-	
-	vector<int> zrzutkowcy;
-	
-	while (identyfikator != "x")
+
+	if (zaplacono >= rachunek)
 	{
-		try
+		cout << endl << endl << "Podaj identyfikatory kupujacych lub 'x', jesli skonczyles je wprowadzac."
+			<< endl << "**************************" << endl;
+		cin >> imie >> nazwisko;
+
+		vector<string> zrzutkowcy;
+
+		while (imie != "x" && nazwisko !="x")
 		{
-			if (IstniejeId(stoi(identyfikator)))
+			try
 			{
-				zrzutkowcy.push_back(stoi(identyfikator));
-				cin >> identyfikator;
+				if (Istnieje(imie, nazwisko))
+				{
+					identyfikator = Nazwa(imie, nazwisko);
+					zrzutkowcy.push_back(identyfikator);
+					cin >> imie >> nazwisko;
+				}
+				else
+				{
+					cout << "Nie ma takiej osoby w firmie" << endl;
+					cin >> identyfikator;
+				}
+			}
+			catch (string exception)
+			{
+				cout << "Niepoprawny format. Sprobuj jeszcze raz.";
+			}
+		}
+
+		cout << "**************************" << endl;
+		
+		double dlug = (zaplacono - rachunek) / zrzutkowcy.size();
+		
+		/*for (auto id = zrzutkowcy.begin(); id != zrzutkowcy.end(); id++)
+		{
+			if (this->listaDlugow.count(*id) == 0)
+			{
+				this->listaDlugow[*id] = dlug;
 			}
 			else
 			{
-				cout << "Nie ma takiej osoby w firmie" << endl;
-				cin >> identyfikator;
+				this->listaDlugow[*id] += dlug;
 			}
-		}
-		catch (string exception)
-		{
-			cout << "Niepoprawny format. Sprobuj jeszcze raz.";
-		}
+		}*/
+
+		cout << "Zamowienie zostalo zrealizowane, a kazdy ze zrzutkowcow jestesmy winni " << dlug << endl << endl;
+		
 	}
+	else
+		cout << "Nie mozna zaplacic za obiad z powodu zbyt malej kwoty zebranej" << endl;
 
-	cout << "**************************" << endl;
-	
-	cout << zaplacono << endl<< rachunek << endl << zrzutkowcy.size() << endl;
-	
-	double dlug = (zaplacono / rachunek) / zrzutkowcy.size();
-
-	for (auto id = zrzutkowcy.begin(); id != zrzutkowcy.end(); id++)
-	{
-		if(this->listaDlugow.count(*id) == 0)
-		{
-			this->listaDlugow[*id] = dlug;
-		}
-		else
-		{
-			this->listaDlugow[*id] += dlug;
-		}
-	}
-
-	cout << "Zamowienie zostalo zrealizowane, a kazdy ze zrzutkowcow jestesmy winni " << dlug << endl << endl;
 }
 
 void Kasa::WypiszDlugi()
@@ -467,4 +452,9 @@ void Kasa::WypiszDlugi()
 		cout << "Uzytkownikowi o id " << id->first << " jestesmy winni " << id->second << endl;
 		plik << id->first << endl << id->second<< endl;
 	}
+}
+
+string Kasa::Nazwa(string a, string b)
+{
+	return (a+b);
 }

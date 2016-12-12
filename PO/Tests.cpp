@@ -4,51 +4,34 @@
 
 void PracownikTest()
 {
-	Pracownik pracownik(1, "Jan", "Niezbedny", 120);
+	Pracownik pracownik("Jan", "Niezbedny", 120);
 
-	cout << pracownik.getId()<< endl;
+	//cout << pracownik.getId()<< endl;
 	cout << pracownik.getImie()<< endl;
 	cout << pracownik.getNazwisko() << endl;
 	cout << pracownik.getSaldo() << endl;
 	cout << pracownik.Oddaj() << endl;
 	cout << pracownik.Pozycz() << endl;
-	cout << pracownik.SaldoPoWplacieNaObiad() << endl;
-	pracownik.przywitanie();
+	//pracownik.przywitanie();
 }
 
 void StazystaTest()
 {
 	Stazysta stazysta("Jasiu", "Pacula", 1245.7);
 
-	cout << stazysta.getId() << endl;
+	//cout << stazysta.getId() << endl;
 	cout << stazysta.getImie() << endl;
 	cout << stazysta.getNazwisko() << endl;
 	cout << stazysta.getSaldo() << endl;
-	cout << stazysta.SaldoPoWplacieNaObiad() << endl;
-	stazysta.przywitanie();
+	//stazysta.przywitanie();
 }
 
-void CzlowiekTest()
+/*void CzlowiekTest()
 {
 	Czlowiek czlowiek;
 
 	czlowiek.przywitanie();
-}
-
-void SkarbonkaTest()
-{
-	Skarbonka skarbonka;
-
-	skarbonka.getmoney();
-	skarbonka.WplacNaObiad();
-	skarbonka.ZaplacZaObiad();
-}
-
-void PosilekTest()
-{
-	Posilek posilek;
-	posilek.getCena();
-}
+}*/
 
 void KasaTest()
 {
@@ -67,9 +50,9 @@ void KasaTest()
 void StazysciPracownicyTworzenieTest()
 {
 	cout << "Przyklad: " << endl;
-	Pracownik P1(0, "Janek", "Maci", 7889.3);
-	Pracownik P2(1, "Maciej", "Miszt", 890.7);
-	Pracownik P3(2, "Kuba", "Kras", 687.3);
+	Pracownik P1("Janek", "Maci", 7889.3);
+	Pracownik P2("Maciej", "Miszt", 890.7);
+	Pracownik P3("Kuba", "Kras", 687.3);
 	Stazysta S1("Lucjan", "Mars", 7876.6);
 	Stazysta S2("Alan", "Walker", 67868.4);
 	Stazysta S3("Darek", "Just", 67687.2);

@@ -18,12 +18,6 @@
     <ClCompile Include="Source.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Posilek.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Skarbonka.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Pracownik.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -41,12 +35,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Posilek.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Skarbonka.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Pracownik.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -64,13 +52,13 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Text Include="Zapis.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
-    <Text Include="Zapis1.txt">
-      <Filter>Resource Files</Filter>
-    </Text>
     <Text Include="Dlugi.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Stazysci.txt">
+      <Filter>Resource Files</Filter>
+    </Text>
+    <Text Include="Pracownicy.txt">
       <Filter>Resource Files</Filter>
     </Text>
   </ItemGroup>

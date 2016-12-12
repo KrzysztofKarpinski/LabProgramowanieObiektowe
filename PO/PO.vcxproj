@@ -113,9 +113,7 @@
   <ItemGroup>
     <ClCompile Include="Czlowiek.cpp" />
     <ClCompile Include="Kasa.cpp" />
-    <ClCompile Include="Posilek.cpp" />
     <ClCompile Include="Pracownik.cpp" />
-    <ClCompile Include="Skarbonka.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Stazysta.cpp" />
     <ClCompile Include="Tests.cpp" />
@@ -123,16 +121,14 @@
   <ItemGroup>
     <ClInclude Include="Czlowiek.h" />
     <ClInclude Include="Kasa.h" />
-    <ClInclude Include="Posilek.h" />
     <ClInclude Include="Pracownik.h" />
-    <ClInclude Include="Skarbonka.h" />
     <ClInclude Include="Stazysta.h" />
     <ClInclude Include="Tests.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Dlugi.txt" />
-    <Text Include="Zapis.txt" />
-    <Text Include="Zapis1.txt" />
+    <Text Include="Stazysci.txt" />
+    <Text Include="Pracownicy.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
